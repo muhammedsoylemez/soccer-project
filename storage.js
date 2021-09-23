@@ -20,3 +20,17 @@ Storage.prototype.getTeamsFromStorage = function () {
     }
     return teams
 }
+
+Storage.prototype.deleteTeamFromStorage = function (teamTitle) {
+    let teams = this.getTeamsFromStorage();
+    teams.forEach((team,index) => {
+        if (team.title === teamTitle) {
+            teams.splice(index,1)
+        }
+    });
+    localStorage.setItem("teams",JSON.stringify(teams))
+}
+
+Storage.prototype.clearAllTeamsFromStorage = function () {
+    localStorage.removeItem("teams")
+}

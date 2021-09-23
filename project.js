@@ -2,7 +2,8 @@ const form = document.getElementById("soccer-form")
 const titleInput = document.querySelector("#title")
 const coachInput = document.querySelector("#coach")
 const urlInput = document.querySelector("#url")
-
+const secondCardBody = document.querySelectorAll(".card-body")[1]
+const clear = document.getElementById("clear-teams")
 
 // Starting UI Object
 const ui = new UI();
@@ -19,6 +20,8 @@ function eventListeners() {
         let teams = storage.getTeamsFromStorage();
         ui.loadAllTeams(teams)
     })
+    secondCardBody.addEventListener("click",deleteTeam)
+    clear.addEventListener("click",clearAllTeams)
 }
 function addTeam(e) {
     const title = titleInput.value.trim();
@@ -40,3 +43,22 @@ function addTeam(e) {
 
     e.preventDefault()
 }
+
+function deleteTeam(e) {
+    if (e.target.id ==="delete-team") {
+        ui.deleteTeamFromUI(e.target)
+        storage.deleteTeamFromStorage(e.target.parentElement.previousElementSibling.previousElementSibling.textContent)
+
+        ui.displayMessages("Silme işlemi başarılı..","success")
+    }
+
+}
+
+function clearAllTeams() {
+    if (confirm("Emin misiniz ?")) {
+        ui.clearAllTeamsFromUI();
+        storage.clearAllTeamsFromStorage();
+    }
+  
+}
+

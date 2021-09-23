@@ -50,3 +50,13 @@ UI.prototype.loadAllTeams = function (teams) {
     `
     });
 }
+
+UI.prototype.deleteTeamFromUI = function (element) {
+    element.parentElement.parentElement.remove();
+}
+UI.prototype.clearAllTeamsFromUI = function () {
+    const teamList = document.getElementById("teams")
+    while (teamList.firstElementChild !==null) {
+        teamList.firstElementChild.remove()
+    }
+}
