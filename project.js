@@ -19,10 +19,13 @@ function addTeam(e) {
     const url = urlInput.value.trim();
     if (title === ""|| coach ===""||url ==="") {
         // Error
+        ui.displayMessages("Please fill all the fields..","danger")
     }else{
         // New Team
         const newTeam = new Team(title,coach,url)
         ui.addTeamToUI(newTeam); // Adding team to the ui
+        ui.displayMessages("Successfully added","success")
+
     }
 
     ui.clearInputs(titleInput,coachInput,urlInput)
