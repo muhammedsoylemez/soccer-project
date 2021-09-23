@@ -36,3 +36,17 @@ UI.prototype.displayMessages = function (message,type) {
         div.remove();
     }, 1500);
 }
+
+UI.prototype.loadAllTeams = function (teams) {
+    const teamList = document.getElementById("teams");
+    teams.forEach(team => {
+         teamList.innerHTML += `
+    <tr>
+        <td><img src="${team.url}" class="img-fluid img-thumbnail"></td>
+        <td>${team.title}</td>
+        <td>${team.coach}</td>
+        <td><a href="#" id="delete-team" class="btn btn-danger">Delete Team</a></td>
+    </tr> 
+    `
+    });
+}

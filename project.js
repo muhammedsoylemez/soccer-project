@@ -15,6 +15,10 @@ eventListeners();
 
 function eventListeners() {
     form.addEventListener("submit",addTeam);
+    document.addEventListener("DOMContentLoaded",function () {
+        let teams = storage.getTeamsFromStorage();
+        ui.loadAllTeams(teams)
+    })
 }
 function addTeam(e) {
     const title = titleInput.value.trim();
