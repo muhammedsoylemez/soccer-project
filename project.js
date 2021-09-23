@@ -5,11 +5,11 @@ const urlInput = document.querySelector("#url")
 const secondCardBody = document.querySelectorAll(".card-body")[1]
 const clear = document.getElementById("clear-teams")
 
-// Starting UI Object
-const ui = new UI();
+// // Starting UI Object
+// const ui = new UI();
 
-// Starting Storage Object
-const storage = new Storage();
+// // Starting Storage Object
+// const storage = new Storage();
 
 // Loading all event;
 eventListeners();
@@ -17,8 +17,8 @@ eventListeners();
 function eventListeners() {
     form.addEventListener("submit",addTeam);
     document.addEventListener("DOMContentLoaded",function () {
-        let teams = storage.getTeamsFromStorage();
-        ui.loadAllTeams(teams)
+        let teams = Storage.getTeamsFromStorage();
+        UI.loadAllTeams(teams)
     })
     secondCardBody.addEventListener("click",deleteTeam)
     clear.addEventListener("click",clearAllTeams)
@@ -29,35 +29,35 @@ function addTeam(e) {
     const url = urlInput.value.trim();
     if (title === ""|| coach ===""||url ==="") {
         // Error
-        ui.displayMessages("Please fill all the fields..","danger")
+        UI.displayMessages("Please fill all the fields..","danger")
     }else{
         // New Team
         const newTeam = new Team(title,coach,url)
-        ui.addTeamToUI(newTeam); // Adding team to the ui
-        storage.addTeamToStorage(newTeam); // Adding team to storage
-        ui.displayMessages("Successfully added","success")
+        UI.addTeamToUI(newTeam); // Adding team to the ui
+        Storage.addTeamToStorage(newTeam); // Adding team to storage
+        UI.displayMessages("Successfully added","success")
 
     }
 
-    ui.clearInputs(titleInput,coachInput,urlInput)
+    UI.clearInputs(titleInput,coachInput,urlInput)
 
     e.preventDefault()
 }
 
 function deleteTeam(e) {
     if (e.target.id ==="delete-team") {
-        ui.deleteTeamFromUI(e.target)
-        storage.deleteTeamFromStorage(e.target.parentElement.previousElementSibling.previousElementSibling.textContent)
+        UI.deleteTeamFromUI(e.target)
+        Storage.deleteTeamFromStorage(e.target.parentElement.previousElementSibling.previousElementSibling.textContent)
 
-        ui.displayMessages("Silme işlemi başarılı..","success")
+        UI.displayMessages("Silme işlemi başarılı..","success")
     }
 
 }
 
 function clearAllTeams() {
     if (confirm("Emin misiniz ?")) {
-        ui.clearAllTeamsFromUI();
-        storage.clearAllTeamsFromStorage();
+        UI.clearAllTeamsFromUI();
+        Storage.clearAllTeamsFromStorage();
     }
   
 }
