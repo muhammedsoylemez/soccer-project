@@ -7,6 +7,9 @@ const urlInput = document.querySelector("#url")
 // Starting UI Object
 const ui = new UI();
 
+// Starting Storage Object
+const storage = new Storage();
+
 // Loading all event;
 eventListeners();
 
@@ -24,6 +27,7 @@ function addTeam(e) {
         // New Team
         const newTeam = new Team(title,coach,url)
         ui.addTeamToUI(newTeam); // Adding team to the ui
+        storage.addTeamToStorage(newTeam); // Adding team to storage
         ui.displayMessages("Successfully added","success")
 
     }
