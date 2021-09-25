@@ -5,13 +5,6 @@ const urlInput = document.querySelector("#url")
 const secondCardBody = document.querySelectorAll(".card-body")[1]
 const clear = document.getElementById("clear-teams")
 
-// // Starting UI Object
-// const ui = new UI();
-
-// // Starting Storage Object
-// const storage = new Storage();
-
-// Loading all event;
 eventListeners();
 
 function eventListeners() {
